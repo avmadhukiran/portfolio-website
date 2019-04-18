@@ -1,6 +1,9 @@
 "use strict";
 // import * as config from './_config/config.js'
+require('dotenv').config();
 const express = require('express');
+const compression = require('express');
+const path = require('path');
 const app = express();
 const axios = require('axios')
 const JSON = require('circular-json');
@@ -14,7 +17,7 @@ var session = require('express-session');
 
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
-const url = require('url');
+
 // configure Express
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -23,6 +26,8 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.use(compression());
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(session({
@@ -35,7 +40,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(__dirname + '/static'));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 const env = "development"
 
@@ -53,7 +58,7 @@ passport.deserializeUser(function (obj, done) {
 passport.use(new GitHubStrategy({
         clientID: GITHUB_CLIENT_ID,
         clientSecret: GITHUB_CLIENT_SECRET,
-        callbackURL: "http://127.0.0.1:5000/auth/github/callback"
+        callbackURL: "http://127.0.0.1:3002/auth/github/callback"
     },
     function (accessToken, refreshToken, profile, done) {
         // asynchronous verification, for effect...
@@ -69,8 +74,8 @@ passport.use(new GitHubStrategy({
 ));
 
 app.get('/', (req, res) => {
-    res.render('pages/index',{ user: req.user });
-});
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
 
 app.get('/login', function (req, res) {
     console.log("login")
@@ -140,7 +145,12 @@ app.get('/repos', (req, res) => {
         });
 });
 
-app.listen(5000);
+const PORT = process.env.PORT || 3002;
+
+app.listen(PORT, '0.0.0.0', (err) => {
+  if (err) { console.log(err); }
+  console.info(`==> 🌎 app listening on http://localhost:${PORT}.`);
+});
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {

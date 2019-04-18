@@ -11,9 +11,8 @@ class Repos extends Component {
       // Call our fetch function below once the component mounts
     this.callBackendAPI()
       .then(res => {
-        console.log(res);
         this.setState({ data: res });
-        console.log(this.state);}
+        }
         )
       .catch(err => console.log(err));
   }
