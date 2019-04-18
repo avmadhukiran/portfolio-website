@@ -1,0 +1,21 @@
+{
+  "name": "Madhu Kiran",
+  "version": "1.0.1",
+  "description": "personal website",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "Madhu Kiran",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.5.9",
+    "express": "^4.16.3",
+    "express-partials": "^0.3.0",
+    "express-session": "^1.16.1",
+    "method-override": "^3.0.0",
+    "passport": "^0.4.0",
+    "passport-github2": "^0.1.11"
+  }
+}

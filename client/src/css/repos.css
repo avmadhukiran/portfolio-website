@@ -1,0 +1,29 @@
+#repos {
+  font-family: 'Courier New';
+}
+#repos .table {
+  margin: 3em;
+  display: inline-block;
+}
+#repos .table .header, #repos .table .row {
+  display: flex;
+}
+#repos .table .header div, #repos .table .row div {
+  flex: 2;
+  padding: 0.5rem 0.5em;
+  border: 2px solid #eeeeee;
+}
+
+#repos .table .body .row div:nth-child(even){background-color: #ffffff;}
+#repos .table .body .row div:nth-child(odd){background-color: #383535;}
+
+#repos .table .body .row div:hover {background-color: #ddd;}
+
+#repos .table .header {
+  flex:2;
+  padding: 0.5rem 0.4em;
+  background-color: #eeeeee;
+}
+#repos .table .header div {
+  cursor: pointer;
+}

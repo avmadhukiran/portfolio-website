@@ -1,3 +1,5 @@
+#Webstorm
+.idea
 # Logs
 logs
 *.log
@@ -35,6 +37,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+config/
 
 # TypeScript v1 declaration files
 typings/
@@ -59,3 +62,15 @@ typings/
 
 # next.js build output
 .next
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless
+
+#TODO list
+TODO.txt
+
+#YouTubeMod private directory
+YouTubeMod/
