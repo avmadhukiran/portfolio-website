@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Table from './table';
 
+
 class Repos extends Component {  
   
   state = {
@@ -31,10 +32,11 @@ class Repos extends Component {
     if (!data.length) return ''
     return (
       <React.Fragment>
-      <div id="repos">
+      <div id="repos" className="row item">
         {this.state && <Table data={this.state.data}/> }
-        <div className = "row item" style={{position: "relative", top:"50%",left:"50%",}}><a class=" icon-down-circle" href="https://github.com/avmadhukiran/" role="button">Learn More</a></div>  
-      </div>
+        </div>
+        <div className = "row item" style={{position: "relative", top:"50%",left:"50%",}}><a className=" icon-down-circle" href="https://github.com/avmadhukiran/" role="button">Learn More</a></div>  
+
       </React.Fragment>
        );
   }

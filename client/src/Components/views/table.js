@@ -44,7 +44,7 @@ class Table extends React.Component {
   }
     
   render() {
-    const rows = this.state.data.map( (rowData) => <Row {...rowData} />);
+    const rows = this.state.data.map( (rowData) => <Row key={rowData.name}{...rowData} />);
 
     return (
       <div className="table">

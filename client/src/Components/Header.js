@@ -10,7 +10,7 @@ export default class Header extends Component {
             <div className="homeDiv center">
                <h1>{resumeData.name}.</h1>
                <h3>I am a {resumeData.role}.{resumeData.roleDescription}<span
-                    class="blinking-cursor">|</span> 
+                    className="blinking-cursor">|</span> 
                </h3>
                <hr/>
                <ul className="social">
